@@ -3,6 +3,7 @@
 #=========================================================================
 # Script to generate inputs for GCD unit.
 
+import fractions
 import math
 import random
 import sys
@@ -10,6 +11,9 @@ import sys
 # Use seed for reproducability
 
 random.seed(0xdeadbeef)
+
+# gcd
+gcd = fractions.gcd if hasattr( fractions, 'gcd' ) else math.gcd
 
 #-------------------------------------------------------------------------
 # Helper Functions
@@ -38,7 +42,7 @@ if sys.argv[1] == "random-a":
 
     a = random.randint(0,0xff)
     b = (a * random.randint(0,0xf)) & 0xff
-    c = math.gcd( a, b )
+    c = gcd( a, b )
 
     in0.append( a )
     in1.append( b )
@@ -63,7 +67,7 @@ elif sys.argv[1] == "random-b":
 
     a = random.randint(0,0xffff)
     b = random.randint(0,0xffff)
-    c = math.gcd( a, b )
+    c = gcd( a, b )
 
     in0.append( a )
     in1.append( b )
