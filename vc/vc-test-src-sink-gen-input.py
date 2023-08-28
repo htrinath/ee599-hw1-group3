@@ -17,10 +17,10 @@ random.seed(0xdeadbeef)
 
 def print_dataset( in_list, out_list ):
 
-  for i in xrange(size):
+  for i in range(size):
 
-    print "`SRC_MEM[{:0>2}] = 8'h{:0>2x}; `SINK_MEM[{:0>2}] = 8'h{:0>2x};" \
-      .format( i, in_list[i], i, out_list[i] )
+    print ("`SRC_MEM[{:0>2}] = 8'h{:0>2x}; `SINK_MEM[{:0>2}] = 8'h{:0>2x};" \
+      .format( i, in_list[i], i, out_list[i] ))
 
 #-------------------------------------------------------------------------
 # Global setup
@@ -38,7 +38,7 @@ out_list = []
 #-------------------------------------------------------------------------
 
 if sys.argv[1] == "ordered":
-  for i in xrange(size):
+  for i in range(size):
     data = random.randint(0,0xff)
 
     # add data to both in and out lists
@@ -53,7 +53,7 @@ if sys.argv[1] == "ordered":
 #-------------------------------------------------------------------------
 
 if sys.argv[1] == "unordered":
-  for i in xrange(size):
+  for i in range(size):
     data = random.randint(0,0xff)
 
     # add data to both in and out lists

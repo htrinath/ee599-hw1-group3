@@ -17,17 +17,17 @@ random.seed(0xdeadbeef)
 
 def print_dataset( in0, in1, out ):
 
-  for i in xrange(len(in0)):
+  for i in range(len(in0)):
 
-    print "init( {:0>2}, 32'h{:0>8x}, 32'h{:0>8x}, 32'h{:0>8x} );" \
-      .format( i, in0[i], in1[i], out[i] )
+    print ("init( {:0>2}, 32'h{:0>8x}, 32'h{:0>8x}, 32'h{:0>8x} );" \
+      .format( i, in0[i], in1[i], out[i] ))
 
 #-------------------------------------------------------------------------
 # Global setup
 #-------------------------------------------------------------------------
 
 size = 50
-print "num_inputs =", size, ";"
+print ("num_inputs =", size, ";")
 
 in0 = []
 in1 = []
@@ -38,7 +38,7 @@ out = []
 #-------------------------------------------------------------------------
 
 if sys.argv[1] == "small":
-  for i in xrange(size):
+  for i in range(size):
 
     a = random.randint(0,100)
     b = random.randint(0,100)

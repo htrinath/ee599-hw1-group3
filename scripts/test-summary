@@ -46,11 +46,11 @@ def parse_cmdline():
 def print_passfail( prefix, num_passed, num_failed, msg ):
 
   if num_failed > 0:
-    print prefix, "[ \033[91mFAILED\033[0m ] ",
+    print (prefix, "[ \033[91mFAILED\033[0m ] ", end = "")
   else:
-    print prefix, "[ \033[92mpassed\033[0m ] ",
+    print (prefix, "[ \033[92mpassed\033[0m ] ", end = "")
 
-  print "P:{:3} F:{:3}  {}".format( num_passed, num_failed, msg )
+  print ("P:{:3} F:{:3}  {}".format( num_passed, num_failed, msg ))
 
 #-------------------------------------------------------------------------
 # Main
@@ -60,7 +60,7 @@ def main():
   opts = parse_cmdline()
 
   if not opts.verbose:
-    print ""
+    print ("")
 
   # Iterate over the subpackages
 
@@ -93,15 +93,15 @@ def main():
       sproj_name = match_sproj.group(1)
     else:
       # NOTE: turned this error into a warning
-      print "WARNING: unrecognized filename pattern for .out"
+      print ("WARNING: unrecognized filename pattern for .out")
       #exit(1)
 
     # Display subpackage name if verbose output
 
     if opts.verbose:
-      print ""
-      print " Subproject:", sproj_name
-      print ""
+      print ("")
+      print (" Subproject:", sproj_name)
+      print ("")
 
     # Scan through this subpackage test output file
 
@@ -190,21 +190,21 @@ def main():
     if not opts.verbose:
       print_passfail( "", num_suites_passed, num_suites_failed, sproj_name )
 
-  # Print out summary for entire package
+  # print (out summary for entire package)
 
-  print ""
-  print " Test Summary:"
+  print ("")
+  print (" Test Summary:")
 
   if opts.verbose:
-    print "  - Number of test suites        : {:>3}".format( total_num_suites  )
-    print "  - Number of test cases passed  : {:>3}".format( total_num_cases_passed  )
-    print "  - Number of test cases failed  : {:>3}".format( total_num_cases_failed  )
+    print ("  - Number of test suites        : {:>3}".format( total_num_suites  ))
+    print ("  - Number of test cases passed  : {:>3}".format( total_num_cases_passed  ))
+    print ("  - Number of test cases failed  : {:>3}".format( total_num_cases_failed  ))
   else:
-    print "  - Number of test subprojects   : {:>3}".format( total_num_sprojs  )
-    print "  - Number of test suites passed : {:>3}".format( total_num_suites_passed  )
-    print "  - Number of test suites failed : {:>3}".format( total_num_suites_failed  )
+    print ("  - Number of test subprojects   : {:>3}".format( total_num_sprojs  ))
+    print ("  - Number of test suites passed : {:>3}".format( total_num_suites_passed  ))
+    print ("  - Number of test suites failed : {:>3}".format( total_num_suites_failed  ))
 
-  print ""
+  print ("")
 
 main()
 

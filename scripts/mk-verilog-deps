@@ -56,9 +56,9 @@ verbose = False
 def vprint( msg, value=None ):
   if verbose:
     if value != None:
-      print msg, value
+      print (msg, value)
     else:
-      print msg
+      print (msg)
 
 #-------------------------------------------------------------------------
 # Main
@@ -88,7 +88,7 @@ def main():
   if src_file_basename.endswith(".v"):
     src_file_basename = src_file_basename[:-2]
   else:
-    print "ERROR: given input file does not end in .v"
+    print ("ERROR: given input file does not end in .v")
     exit(1)
 
   # The pattern we use to find includes. Note that this is a little hacky

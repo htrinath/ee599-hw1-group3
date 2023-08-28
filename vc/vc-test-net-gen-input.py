@@ -50,15 +50,15 @@ payload = []
 
 def print_dataset( src, dest, opaque, payload ):
 
-  for i in xrange(size):
+  for i in range(size):
 
-    print dataset_template.format( src[i], dest[i], opaque[i], payload[i] )
+    print (dataset_template.format( src[i], dest[i], opaque[i], payload[i] ))
 
 #-------------------------------------------------------------------------
 # uniform random dataset
 #-------------------------------------------------------------------------
 
-for i in xrange(size):
+for i in range(size):
   src.append(  random.randint(0, num_ports-1 ) )
   dest.append( random.randint(0, num_ports-1 ) )
   opaque.append(  random.randint( 0, ( 1 << opaque_nbits ) - 1 ) )
