@@ -215,6 +215,27 @@ module top;
 
     // Add additional datasets for evaluation here
 
+    else if ( input_dataset == "large" ) begin
+      `include "lab1-imul-gen-input_large.py.v"
+    end
+
+    else if ( input_dataset == "random" ) begin
+      `include "lab1-imul-gen-input_random.py.v"
+    end
+
+
+    else if ( input_dataset == "corner_smallest" ) begin
+      `include "lab1-imul-gen-input_corner_smallest.py.v"
+    end
+
+    else if (input_dataset == "corner_largest") begin
+      `include "lab1-imul-gen-input_corner_largest.py.v"
+    end
+
+    else if (input_dataset == "corner") begin
+      `include "lab1-imul-gen-input_corner.py.v"
+    end
+
     else begin
       $display( "" );
       $display( " ERROR: Unrecognized input dataset specified with +input!" );
