@@ -16,13 +16,13 @@
 module imul_base_datapath(resp_msg, b_lsb, req_msg, a_mux_sel, b_mux_sel, add_mux_sel, result_mux_sel, result_en, clk);
 	parameter WIDTH = 32;
 	input lab1_imul_req_msg_t req_msg;
-	input a_mux_sel, b_mux_sel, add_mux_sel, result_mux_sel, result_en, clk;
+	input logic a_mux_sel, b_mux_sel, add_mux_sel, result_mux_sel, result_en, clk;
 	output lab1_imul_resp_msg_t resp_msg;
-	output b_lsb;
+	output logic b_lsb;
 
 	//wire [WIDTH-1:0]req_msg_a = req_msg[WIDTH-1:0];
 	//wire [WIDTH-1:0]req_msg_b = req_msg[2*WIDTH-1:WIDTH];
-	wire [WIDTH-1:0]wire_interim[10:0];
+	logic [WIDTH-1:0]wire_interim[10:0];
 
 	assign b_lsb = wire_interim[6][0];
 	assign resp_msg.result = wire_interim[8];
@@ -78,12 +78,12 @@ module imul_base_cp(a_mux_sel, b_mux_sel, add_mux_sel, result_mux_sel, result_en
 	parameter DONE = 2'b10;
 
 	input req_val, resp_rdy, b_lsb, clk, rst;
-	output reg a_mux_sel, b_mux_sel, add_mux_sel, result_mux_sel;
-	output result_en;
-	output reg req_rdy, resp_val;
-	reg [1:0]state, next_state;
-	reg flag = 1'b1;
-	reg [5:0] counter;
+	output logic a_mux_sel, b_mux_sel, add_mux_sel, result_mux_sel;
+	output logic result_en;
+	output logic req_rdy, resp_val;
+	logic [1:0]state, next_state;
+	logic flag = 1'b1;
+	logic [5:0] counter;
 
 	assign result_en = clk & flag;
 	//assign result_en = 1'b1;
@@ -114,7 +114,7 @@ module imul_base_cp(a_mux_sel, b_mux_sel, add_mux_sel, result_mux_sel, result_en
 				a_mux_sel = 1'b0;
 				b_mux_sel = 1'b0;
 				result_mux_sel = 1'b0;
-				flag = 1'b1; //not sure
+				flag = 1'b1;
 				if(b_lsb) add_mux_sel = 1'b0;
 				else add_mux_sel = 1'b1;
 				req_rdy = 1'b0;
@@ -228,7 +228,7 @@ module lab1_imul_IntMulBase
   // Instantiate datapath and control models here and then connect them
   // together. As a place holder, for now we simply pass input operand
   // A through to the output, which obviously is not correct.
-  wire a_mux_sel, b_mux_sel, add_mux_sel, result_mux_sel, result_en, b_lsb;
+  logic a_mux_sel, b_mux_sel, add_mux_sel, result_mux_sel, result_en, b_lsb;
 
   imul_base_cp control_path (.a_mux_sel(a_mux_sel), 
 				   .b_mux_sel(b_mux_sel), 
